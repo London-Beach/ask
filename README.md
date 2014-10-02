@@ -26,11 +26,13 @@ To access the site, go to your browser and open up `http://localhost:8080`.
 
 ## Structure
 
-The application uses Clojure on the back-end and a standard mixture of HTML/CSS/JS o nthe front-end. [Http-kit][5] is used as the http-client and web sockets are utilised to handle the realtime communication.
+The application uses Clojure on the back-end and a standard mixture of HTML/CSS/JS on the front-end. [Http-kit][5] is used as the http-client and web sockets are utilised to handle the realtime communication.
 
 ### Templating
 
-In order to create views, the application uses [Clostache][4] to generate views. Views exist in the `resources/templates/` folder and end in `.tash.html`. Wrapping named variables in moustaches (e.g. `{{name}}`) allows them to be filled in later; for example:
+The pages seen by the user are a combination of _views_ and _models_, the _view_ being a template file - located in `resources/templates/` and ending in `.tash.html` - and the _model_ being a dictionary of key-value pairs - for example `{ :name "Jimmy" :age 22 }`.
+
+The keys of the _model_ directly correlate to 'gaps' in the _view_; which are referenced by a pair of 'moustaches' (e.g. `{{name}}`, `{{age}]`). Combining the two looks like this:
 
 **resources/templates/my-template.tash.html**
 ```html
