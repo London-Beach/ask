@@ -32,7 +32,7 @@ The application uses Clojure on the back-end and a standard mixture of HTML/CSS/
 
 The pages seen by the user are a combination of _views_ and _models_, the _view_ being a template file - located in `resources/templates/` and ending in `.tash.html` - and the _model_ being a dictionary of key-value pairs - for example `{ :name "Jimmy" :age 22 }`.
 
-The keys of the _model_ directly correlate to 'gaps' in the _view_; which are referenced by a pair of 'moustaches' (e.g. `{{name}}`, `{{age}]`). Combining the two looks like this:
+The keys of the _model_ directly correlate to 'gaps' in the _view_; which are referenced by a pair of 'moustaches' (e.g. `{{name}}`, `{{age}}`). Combining the two looks like this:
 
 **resources/templates/my-template.tash.html**
 ```html
