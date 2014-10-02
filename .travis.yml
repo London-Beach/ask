@@ -1,10 +1,11 @@
 language: clojure
 lein: lein2
 jdk:
-      - openjdk7
+- openjdk7
 deploy:
   provider: heroku
-  api_key: e9fb3332-5e26-4300-ba1c-77fd2a6f435e
+  api_key:
+    secure: B44Creag7QEMomaODlkfVlnP8OM3jH6BZHlMSO8oYhctiXGynY3f8loQAV7pdp3z8bckLfIQrP/1aJcopz96hK/VSrmTGp7qAuUpC5JBTdbQd/UUNlDXFODgYG7LrFUnsINJySziNT8okRgJa1t5F6p5ntTg//iMLyrJp7eC0CA=
   app:
     master: ask-staging
     production: ask-production
