@@ -1,23 +1,27 @@
 (ns ask.test.routes
-  (:require [clojure.test :refer :all]
-            [ask.routes :refer :all]
-            [ring.mock.request :as mock]
-            [ask.templates :as templates]))
+  (:use midje.sweet)
+  (:require [ask.routes :refer :all]
+            [ask.app :as app]
+            [ring.mock.request :as mock]))
 
-(defn- string-contains? [haystack needle]
-  (not (= (.indexOf haystack needle) -1)))
+(facts "routes"
+  (fact "it shows the home page"
+        (-> (mock/request :get "/")
+            app
+            :status) => 200)
+        (-> (mock/request :get "/")
+            app
+            :body) => (contains "Start Your Live Feedback Session")
 
-(deftest test-app
-  (testing "main route"
-    (let [response (app (mock/request :get "/"))]
-      (is (= (:status response) 200))
-      (is (= (string-contains? (:body response) "Start Your Live Feedback Session") true))))
+  (fact "it shows not found when the page does not exist"
+        (-> (mock/request :get "/invalid")
+            app
+            :status) => 404)
 
-  (testing "create route"
-    (let [response (app (mock/request :post "/"))]
-      (is (= (:status response) 302))
-      (is (= (get (:headers response) "Location") "/"))))
-
-  (testing "not-found route"
-    (let [response (app (mock/request :get "/invalid"))]
-      (is (= (:status response) 404)))))
+  (fact "it redirects to a newly created session when user clicks start session"
+        (-> (mock/request :post "/")
+            app
+            :headers
+            (get "Location")) => "/notrandom"
+        (provided
+             (app/create-session) => "notrandom")))
