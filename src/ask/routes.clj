@@ -1,11 +1,11 @@
 (ns ask.routes
-  (:use [ask.handler :only [my-handler]])
+  (:use [ask.handler :only [home-handler]])
   (:require [compojure.core :refer :all]
             [compojure.handler :as handler]
             [compojure.route :as route]))
 
 (defroutes app-routes
-           (GET "/" [request] (my-handler request))
+           (GET "/" [request] (home-handler request))
            (route/resources "/")
            (route/not-found "Not Found"))
 
