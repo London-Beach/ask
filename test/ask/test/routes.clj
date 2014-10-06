@@ -6,12 +6,10 @@
 
 (facts "routes"
   (fact "it shows the home page"
-        (-> (mock/request :get "/")
-            app
-            :status) => 200)
-        (-> (mock/request :get "/")
-            app
-            :body) => (contains "Start Your Live Feedback Session")
+        (let [response (-> (mock/request :get "/")
+                           app)]
+          (:status response) => 200
+          (:body response) => (contains "Start Your Live Feedback Session")))
 
   (fact "it shows not found when the page does not exist"
         (-> (mock/request :get "/invalid")
