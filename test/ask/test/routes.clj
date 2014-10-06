@@ -12,7 +12,12 @@
     (let [response (app (mock/request :get "/"))]
       (is (= (:status response) 200))
       (is (= (string-contains? (:body response) "Start Your Live Feedback Session") true))))
-  
+
+  (testing "create route"
+    (let [response (app (mock/request :post "/"))]
+      (is (= (:status response) 302))
+      (is (= (get (:headers response) "Location") "/"))))
+
   (testing "not-found route"
     (let [response (app (mock/request :get "/invalid"))]
       (is (= (:status response) 404)))))
