@@ -24,6 +24,10 @@ To start a web server for the application, run:
     
 To access the site, go to your browser and open up `http://localhost:8080`.
 
+To run the tests, navigate to the project root folder and run:  
+
+    lein midje
+
 ## Structure
 
 The application uses Clojure on the back-end and a standard mixture of HTML/CSS/JS on the front-end. [Http-kit][5] is used as the http-client and web sockets are utilised to handle the realtime communication.
