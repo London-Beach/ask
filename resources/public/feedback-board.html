@@ -2,7 +2,8 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>Ask for Live Feedback</title>
+    <title>Live Feedback Board</title>
+    <link rel="stylesheet" type="text/css" href="style/main.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 </head>
 <body>
@@ -13,18 +14,12 @@
             </div>
         </div>
     </nav>
-    <div class="container">
-        <div class="jumbotron">
-            <h1>Ask the tool for live feedback!</h1>
-            <p>...</p>
-            <form action="/" method="post">
-                <p><button class="btn btn-primary btn-lg" role="button" name="create" type="submit" value="create">
-                    Start Your Live Feedback Session
-                </button></p>
-            </form>
-        </div>
-    </div>
+
+    <canvas id="canvas" width="1200" height="600">
+    </canvas>
+
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="js/presenter.js"></script>
 </body>
 </html>
