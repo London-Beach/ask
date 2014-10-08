@@ -4,7 +4,7 @@
   (:require [ask.templates :as templates]))
 
 (defn home-handler [request]
-  (templates/render-template "home"))
+  (templates/render-with-header-and-footer "home"))
 
 (defn create-handler [request]
   (redirect (str "/" (create-session))))
