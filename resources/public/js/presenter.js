@@ -17,6 +17,8 @@ $(function () {
     };
 
 
-    var c = $("#canvas")[0];
-    var ctx = c.getContext("2d");
+    var canvas = $(".canvas")[0];
+    var context = canvas.getContext("2d");
+    context.canvas.width  = window.innerWidth;
+    context.canvas.height = window.innerHeight;
 });
