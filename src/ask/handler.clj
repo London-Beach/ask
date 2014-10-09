@@ -8,3 +8,6 @@
 
 (defn create-handler [request]
   (redirect (str "/" (create-session))))
+
+(defn feedback-board-handler [request]
+      (templates/render-with-header-and-footer "feedback-board"))
