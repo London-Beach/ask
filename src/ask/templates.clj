@@ -8,8 +8,8 @@
                          (str template-name ".tash.html"))))))
 
 (defn- read-partial-templates [templates]
-  (reduce (fn [read-templates current-template]
-            (assoc read-templates current-template
+  (reduce (fn [templates-read-so-far current-template]
+            (assoc templates-read-so-far current-template
                                   (read-template-file (name current-template))))
           {}
           templates))
