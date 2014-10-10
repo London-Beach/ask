@@ -4,7 +4,8 @@
 
 (defn- read-template-file [template-name]
   (slurp (io/resource
-           (str "templates/" template-name ".tash.html"))))
+           (str (io/file "templates"
+                         (str template-name ".tash.html"))))))
 
 (defn- read-partial-templates [templates]
   (reduce (fn [read-templates current-template]
@@ -15,9 +16,9 @@
 
 (defn render-template
   ([template-name]
-   (render-template template-name {} {}))
+   (render-template template-name {} []))
   ([template-name parameters]
-   (render-template template-name parameters {}))
+   (render-template template-name parameters []))
   ([template-name parameters partials]
    (clostache/render (read-template-file template-name)
                      parameters
