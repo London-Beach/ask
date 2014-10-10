@@ -10,4 +10,4 @@
   (redirect (str "/" (create-session))))
 
 (defn feedback-board-handler [request]
-      (templates/render-with-header-and-footer "feedback-board"))
+  (templates/render-with-header-and-footer "feedback-board"))

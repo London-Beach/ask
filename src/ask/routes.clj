@@ -6,8 +6,8 @@
 
 (defroutes app-routes
            (GET "/" [request] (home-handler request))
-           (GET "/feedback-board" [request] (feedback-board-handler request))
            (POST "/" [request] (create-handler request))
+           (GET "/feedback-board" [request] (feedback-board-handler request))
            (route/resources "/")
            (route/not-found "Not Found"))
 
