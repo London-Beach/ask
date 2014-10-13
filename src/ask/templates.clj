@@ -2,10 +2,13 @@
   (:require [clostache.parser :as clostache]
             [clojure.java.io :as io]))
 
+(defn- join-file-path [& paths]
+  (str (apply io/file paths)))
+
 (defn- read-template-file [template-name]
   (slurp (io/resource
-           (str (io/file "templates"
-                         (str template-name ".tash.html"))))))
+           (join-file-path "templates"
+                           (str template-name ".tash.html")))))
 
 (defn- read-partial-templates [templates]
   (reduce (fn [templates-read-so-far current-template]
