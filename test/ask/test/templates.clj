@@ -4,18 +4,26 @@
 
 (facts "templates"
   (fact "it renders the template name given"
-        (render-template "template") => "Hello!"
+        (render-template "my-template") => "Hello!"
         (provided
-          (slurp anything) => "Hello!"))
+          (#'ask.templates/read-template-file anything) => "Hello!"))
 
   (fact "it inserts variables as needed"
-        (render-template "template"
+        (render-template "my-template"
                          {:name "Rob"}) => "Rob!"
         (provided
-          (slurp anything) => "{{name}}!"))
+          (#'ask.templates/read-template-file anything) => "{{name}}!"))
 
   (fact "it handles duplicates well"
-        (render-template "template"
+        (render-template "my-template"
                          {:name "Rob"}) => "RobRob!"
         (provided
-          (slurp anything) => "{{name}}{{name}}!")))
+          (#'ask.templates/read-template-file anything) => "{{name}}{{name}}!"))
+
+  (fact "it can handle nested templates"
+        (render-template "my-template"
+                         {:name "Rob"}
+                         [:header]) => "<h1>Rob!</h1>"
+        (provided
+          (#'ask.templates/read-template-file "header") => "<h1>{{name}}!</h1>"
+          (#'ask.templates/read-template-file "my-template") => "{{> header}}")))
