@@ -1,4 +1,4 @@
-var WEB_SOCKET_URL = 'ws://example.com:8080/api/presenter';
+var WEB_SOCKET_URL = 'ws://' + window.location.hostname + ':' + window.location.port + '/api/presenter';
 
 $(function () {
     var webSocket = new WebSocket(WEB_SOCKET_URL);
