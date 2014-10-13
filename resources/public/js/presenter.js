@@ -1,8 +1,17 @@
 var WEB_SOCKET_URL = 'ws://' + window.location.hostname + ':' + window.location.port + '/api/presenter';
 
+var growCanvasToParent = function () {
+    $('canvas').each(function () {
+        var $this = $(this);
+        var $parent = $this.parent();
+
+        $this.css("width", $parent.width());
+        $this.css("height", $parent.height());
+    });
+};
+
 $(function () {
     var webSocket = new WebSocket(WEB_SOCKET_URL);
-    console.log("starting the connection process");
 
     webSocket.onopen = function () {
         console.log("Connected successfully!");
@@ -16,9 +25,9 @@ $(function () {
         console.log("Message received: " + event.data);
     };
 
+    $(window).resize(function() {
+        growCanvasToParent();
+    });
 
-    var canvas = $(".canvas")[0];
-    var context = canvas.getContext("2d");
-    context.canvas.width  = window.innerWidth;
-    context.canvas.height = window.innerHeight;
+    growCanvasToParent();
 });
