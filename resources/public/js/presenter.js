@@ -30,4 +30,5 @@ $(function () {
     });
 
     growCanvasToParent();
+    $('#board-url').text(window.location);
 });

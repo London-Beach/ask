@@ -1,11 +1,14 @@
 {{> header}}
+  <div class="alert alert-info">
     <div class="container">
-        <div class="alert alert-info" role="alert">
-            <span class="glyphicon glyphicon-phone"></span>
-            To interact with this board go to: example.com/feedback-board on your desktop or mobile.</div>
-        <div id="feedback-canvas-container">
-            <canvas class="canvas"></canvas>
-        </div>
+      <span class="glyphicon glyphicon-phone"></span>
+      To interact with this board go to <a id="board-url" href="#" class="alert-link">...</a> on your desktop or mobile.
     </div>
-<script type="application/javascript" src="js/presenter.js"></script>
+  </div>
+  <div class="container">
+    <div id="feedback-canvas-container">
+      <canvas class="canvas"></canvas>
+    </div>
+  </div>
+  <script type="application/javascript" src="js/presenter.js"></script>
 {{> footer}}

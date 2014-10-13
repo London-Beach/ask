@@ -9,3 +9,13 @@
     border: 1px solid black;
     position:absolute;
 }
+
+nav.navbar {
+    margin-bottom: 0;
+}
+
+div.alert-info {
+    border-top: 0;
+    border-radius: 0;
+    font-size: 1.2em;
+}
